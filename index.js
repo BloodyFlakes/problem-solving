@@ -211,4 +211,116 @@ class Calculator {
 }
 
 // ---------------------------------------------------------------------------------------------------
-// 2726. Calculator with Method Chaining
+// 1. Two Sum
+const twoSum = function (nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+  return null;
+};
+
+// ---------------------------------------------------------------------------------------------------
+// 9. Palindrome Number
+const isPalindrome = function (x) {
+  const reversedNumber = parseInt(x.toString().split('').reverse().join(''));
+  return reversedNumber === x;
+};
+
+// ---------------------------------------------------------------------------------------------------
+// 13. Roman to Integer
+const romanToInt = function (s) {
+  let answer = 0;
+  const roman = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+
+  for (let i = 0; i < s.length - 1; i++) {
+    if (roman[s[i]] < roman[s[i + 1]]) {
+      answer -= roman[s[i]];
+    } else {
+      answer += roman[s[i]];
+    }
+  }
+  return answer + roman[s[s.length - 1]];
+};
+
+// ---------------------------------------------------------------------------------------------------
+// 7. Reverse Integer
+const reverse = function (x) {
+  const sign = Math.sign(x);
+
+  const newNum = parseInt(Math.abs(x).toString().split('').reverse().join(''));
+  if (newNum > Math.pow(2, 31) - 1 || newNum < -Math.pow(2, 31)) {
+    return 0;
+  } else {
+    return newNum * sign;
+  }
+};
+
+// ---------------------------------------------------------------------------------------------------
+// 3110. Score of a String
+const scoreOfString = function (s) {
+  let score = 0;
+  for (let i = 0; i < s.length - 1; i++) {
+    score += Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1));
+  }
+  return score;
+};
+
+// ---------------------------------------------------------------------------------------------------
+// 20. Valid Parentheses
+const isValid = function (s) {
+  const stack = [];
+  const mapping = {
+    ')': '(',
+    '}': '{',
+    ']': '[',
+  };
+
+  for (const c of s) {
+    if (Object.values(mapping).includes(c)) {
+      stack.push(c);
+    } else if (mapping.hasOwnProperty(c)) {
+      if (!stack.length || mapping[c] !== stack.pop()) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+};
+
+// ---------------------------------------------------------------------------------------------------
+// 14. Longest Common Prefix
+const longestCommonPrefix = function (strs) {
+  let pref = strs[0];
+  let prefLen = pref.length;
+
+  for (let i = 1; i < strs.length; i++) {
+    let s = strs[i];
+    while (pref !== s.substring(0, prefLen)) {
+      prefLen--;
+      if (prefLen === 0) {
+        return '';
+      }
+      pref = pref.substring(0, prefLen);
+    }
+  }
+  return pref;
+};
+
+// ---------------------------------------------------------------------------------------------------
+// 58. Length of Last Word
+const lengthOfLastWord = function (s) {
+  const str = s.trim().split(' ');
+  return str[str.length - 1].length;
+};
