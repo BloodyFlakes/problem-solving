@@ -211,7 +211,6 @@ class Calculator {
 }
 
 // ---------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
 // 1. Two Sum
 const twoSum = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
@@ -325,6 +324,3 @@ const lengthOfLastWord = function (s) {
   const str = s.trim().split(' ');
   return str[str.length - 1].length;
 };
-=======
-// 2726. Calculator with Method Chaining
->>>>>>> c285335080e067d8a62278c0c178c2135e2ff9b8
